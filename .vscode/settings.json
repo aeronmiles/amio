@@ -1,0 +1,16 @@
+{
+    "cSpell.enabled": false,
+    "liveSassCompile.settings.excludeList": [
+        "**/src/scss/**",
+    ],
+    "liveSassCompile.settings.includeItems": [
+        "**/src/scss/app.scss",
+    ],
+    "liveSassCompile.settings.formats":[
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/wwwroot/css/"
+        }
+    ]
+}

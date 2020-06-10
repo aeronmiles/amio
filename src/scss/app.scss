@@ -1,0 +1,13 @@
+// app.scss
+// 1. Your custom variables and variable overwrites.
+// @import "theme/accordion.scss";
+@import "theme/variables.scss";
+
+// 2. Import default variables and available mixins.
+@import "uikit/variables.scss";
+@import "uikit/mixins.scss";
+
+// 3. Your custom mixin overwrites.
+// @import "theme/accordion-mixins.scss";
+// 4. Import UIkit
+@import "uikit/uikit.scss";
