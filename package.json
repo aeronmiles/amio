@@ -2,7 +2,7 @@
   "name": "am.io",
   "version": "1.0.0",
   "description": "",
-  "main": "",
+  "private":true,
   "dependencies": {},
   "devDependencies": {
     "webpack": "^4.43.0",
