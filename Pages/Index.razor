@@ -4,4 +4,33 @@
 
 Welcome to your new app.
 
+
 <UIKit></UIKit>
+
+<CodeSnippet Code="@(@"
+    [Serializable]
+    public struct SpawnRandomInSphere : ISharedComponentData
+    {
+        public Entity Entity;
+        public float Radius;
+        public int Count;
+    }
+
+    public class SpawnRandomInSphere : MonoBehaviour
+    {
+        public Mesh Mesh;
+        public Material Material;
+        public float Radius;
+        public int Count;
+
+        private void spawnEntity(Entity entity, EntityManager em)
+        {
+            var spawnerData = new ECS.Particles.SpawnRandomInSphere
+            {
+                Radius = Radius,
+                Count = Count
+            };
+            em.AddSharedComponentData(entity, spawnerData);
+        }
+    }
+  ")" />

@@ -1,4 +1,8 @@
 // app.scss
+
+@import "blazor/blazor.scss";
+@import "prism/prism.scss";
+
 // 1. Your custom variables and variable overwrites.
 // @import "theme/accordion.scss";
 @import "theme/variables.scss";
