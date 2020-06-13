@@ -1,13 +1,16 @@
 ﻿@page "/"
+@inject DynamicLoader DynamicLoader
 
-<h1>Hello, world!</h1>
+<h1 @onclick="onClick">Hello, world!</h1>
 
-Welcome to your new app.
+@code{
+    private async void onClick()
+    {
+        await DynamicLoader.LoadAsset("content/portfolio/photo1.jpg", "img");
+    }
+}
 
-
-<UIKit></UIKit>
-
-<CodeSnippet Code="@(@"
+@* <CodeSnippet Code="@(@"
     [Serializable]
     public struct SpawnRandomInSphere : ISharedComponentData
     {
@@ -33,4 +36,5 @@ Welcome to your new app.
             em.AddSharedComponentData(entity, spawnerData);
         }
     }
-  ")" />
+  ")" /> *@
+
