@@ -15,35 +15,46 @@ const GLOB_PATHS = [
   path.join(__dirname, 'wwwroot/index.html'),
 ]
 
+const DLL_PATHS = [
+  path.join(__dirname, 'bin/Debug/netstandard2.1/wwwroot/**/*'),
+]
+
 module.exports = {
+  mode: 'development',
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/
+  },
+  optimization: {
+    // minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // minimizer: [new TerserJSPlugin({})],
+  },
   resolve: {
     alias: {
       'uikit-util': path.resolve(__dirname, 'src/js/uikit/js/util/index.js')
     },
     extensions: ['.js'],
   },
-  optimization: {
-    // minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    minimizer: [],
+  entry: { 
+    app: './src/js/app.js', 
+    // preload: './src/lib/preloadjs/preload.js', 
+    // three: './src/js/three.js', 
+    // prism: './src/css/prism.scss'
   },
-  mode: 'production',
-  watch: true,
-  entry: ['./src/js/app.js', './src/css/app.scss'],
   output: {
     path: path.resolve(__dirname, 'wwwroot/'),
-    filename: 'js/app.js'
+    filename: 'js/[name].js'
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader,
-        { loader: "css-loader", options: { importLoaders: 1 } },
-          "postcss-loader"],
+        use: ['css-loader', 'postcss-loader']
+        // { loader: "css-loader", options: { importLoaders: 1 } } ],
       },
       {
         test: /\.svg$/,
@@ -53,7 +64,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/app.css',
+      filename: 'css/[name].css',
     }),
     // new PurgecssPlugin({
     //   paths: () => glob.sync(GLOB_PATHS, { nodir: true }),
@@ -85,7 +96,7 @@ module.exports = {
 
   devServer: {
     watchContentBase: true,
-    contentBase: path.resolve(__dirname, "dist"),
+    contentBase: path.resolve(__dirname, "wwwroot"),
     open: true,
   },
 };

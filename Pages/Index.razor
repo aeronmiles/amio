@@ -1,40 +1,31 @@
 ﻿@page "/"
-@inject DynamicLoader DynamicLoader
+@* @using BlazorComponentUtilities *@
 
-<h1 @onclick="onClick">Hello, world!</h1>
+<h1>Hello, world!</h1>
 
-@code{
-    private async void onClick()
-    {
-        await DynamicLoader.LoadAsset("content/portfolio/photo1.jpg", "img");
-    }
+<div loading="lazy">
+    <img src="https://localhost:5001/content/portfolio/photo1.jpg" loading="lazy" alt="">
+    <img src="https://localhost:5001/content/portfolio/photo2.jpg" loading="lazy" alt="">
+    <img src="https://localhost:5001/content/portfolio/photo3.jpg" loading="lazy" alt="">
+    <img src="https://localhost:5001/content/portfolio/photo4.jpg" loading="lazy" alt="">
+    <img src="https://localhost:5001/content/portfolio/photo5.jpg" loading="lazy" alt="">
+    <img src="https://localhost:5001/content/portfolio/photo6.jpg" loading="lazy" alt="">
+    <img src="https://localhost:5001/content/portfolio/photo7.jpg" loading="lazy" alt="">
+    <img src="https://localhost:5001/content/portfolio/photo8.jpg" loading="lazy" alt="">
+</div>
+
+@* @if (loaded)
+{
+    <link rel="prefetch" href="https://code.createjs.com/1.0.0/preloadjs.min.js" as="script">
+    <link rel="prefetch" href="https://localhost:5001/content/portfolio/photo2.jpg" as="image">
+    <link rel="prefetch" href="https://localhost:5001/content/portfolio/photo3.jpg" as="image">
+}    *@
+
+@code {
+    private int _next = 0;
+    
+    public string next => (_next++).ToString();
+        
+    //await DynamicLoader.LoadAsset (sources[i]);
 }
-
-@* <CodeSnippet Code="@(@"
-    [Serializable]
-    public struct SpawnRandomInSphere : ISharedComponentData
-    {
-        public Entity Entity;
-        public float Radius;
-        public int Count;
-    }
-
-    public class SpawnRandomInSphere : MonoBehaviour
-    {
-        public Mesh Mesh;
-        public Material Material;
-        public float Radius;
-        public int Count;
-
-        private void spawnEntity(Entity entity, EntityManager em)
-        {
-            var spawnerData = new ECS.Particles.SpawnRandomInSphere
-            {
-                Radius = Radius,
-                Count = Count
-            };
-            em.AddSharedComponentData(entity, spawnerData);
-        }
-    }
-  ")" /> *@
 

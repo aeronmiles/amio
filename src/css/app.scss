@@ -1,7 +1,6 @@
 // app.scss
 
 @import "blazor/blazor.css";
-@import "prism/prism.scss";
 
 // // 1. Your custom variables and variable overwrites.
 // // @import "theme/accordion.scss";
@@ -16,6 +15,12 @@
 // // 4. Import UIkit
 // @import "uikit/uikit.scss";
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+// @import "./tailwind/tailwind.css";
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import "typography.scss";
+

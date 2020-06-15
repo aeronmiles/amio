@@ -2,5 +2,29 @@
   "version": "1.0",
   "defaultProvider": "cdnjs",
   "libraries": [
+    {
+      "provider": "unpkg",
+      "library": "tailwindcss@1.4.6",
+      "destination": "src\\lib\\tailwindcss"
+    },
+    {
+      "provider": "unpkg",
+      "library": "three@0.117.1",
+      "destination": "src\\lib\\threejs"
+    },
+    {
+      "provider": "unpkg",
+      "library": "uikit@3.5.4",
+      "destination": "src\\lib\\uikit"
+    },
+    {
+      "library": "animejs@3.2.0",
+      "destination": "src\\lib\\animejs"
+    },
+    {
+      "provider": "unpkg",
+      "library": "preloadjs@1.0.1",
+      "destination": "src\\lib\\preloadjs"
+    }
   ]
 }

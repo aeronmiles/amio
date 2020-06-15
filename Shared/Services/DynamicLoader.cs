@@ -3,7 +3,6 @@ using Microsoft.JSInterop;
 
 namespace am.io
 {
-
     public class DynamicLoader
     {
         private readonly IJSRuntime JSRuntime;
@@ -13,10 +12,10 @@ namespace am.io
             JSRuntime = jsRuntime;
         }
 
-        private string jsLoader = "DynamicLoader.loadAsset";
-        public async Task<string> LoadAsset(string url, string type)
+        private string loader = "DynamicLoader.load";
+        public async Task<string> LoadAsset(string url)
         {
-            var result = await JSRuntime.InvokeAsync<string>(jsLoader, url, type);
+            var result = await JSRuntime.InvokeAsync<string>(loader, url);
             return result;
         }
     }
